@@ -6,9 +6,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["DotNetCoreOnK8S.csproj", ""]
+COPY ["DotNetCoreOnK8S", ""]
 RUN dotnet restore "./DotNetCoreOnK8S.csproj"
-COPY . .
 WORKDIR "/src/."
 RUN dotnet build "DotNetCoreOnK8S.csproj" -c Release -o /app/build
 

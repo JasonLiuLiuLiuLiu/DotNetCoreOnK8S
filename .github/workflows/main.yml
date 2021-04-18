@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    name: Test
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -38,4 +38,3 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ${{ secrets.DOCKER_REPO }}
           tags: ${{ github.run_number }}
-          file: ./DotNetCoreOnK8S/Dockerfile
