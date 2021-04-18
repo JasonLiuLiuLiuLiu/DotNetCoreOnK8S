@@ -35,7 +35,7 @@ jobs:
             
       - name: Set build version
         run: |
-          sed -i -e 's/999/${{ github.run_number }}/g' /DotNetCoreOnK8S/appsettings.json
+          sed -i -e 's/999/${{ github.run_number }}/g' ./DotNetCoreOnK8S/appsettings.json
 
       - uses: docker/build-push-action@v1
         with:
