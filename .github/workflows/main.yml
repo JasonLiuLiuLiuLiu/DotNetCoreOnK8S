@@ -38,3 +38,22 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ${{ secrets.DOCKER_REPO }}
           tags: ${{ github.run_number }}
+
+
+  deploy:
+    name: deploy container on k8s
+    runs-on: ubuntu-latest
+    needs: [docker]
+
+    steps:
+
+    - name: deploy container
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.K8SHOST }}
+        username: ${{ secrets.K8SUSERNAME }}
+        password: ${{ secrets.K8SPASSWORD }}
+        port: ${{ secrets.DEV_SSH_PORT }}
+        command_timeout: 30m
+        script: |
+          kubectl set image --record deployment/dotnetcoreonk8s dotnetcoreonk8s=${{ secrets.DOCKER_REPO }}:${{ github.run_number }} -n fire-ug

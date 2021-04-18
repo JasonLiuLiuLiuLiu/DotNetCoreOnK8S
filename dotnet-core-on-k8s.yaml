@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: fire-ug
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnetcoreonk8s
+  namespace: fire-ug
+spec:
+  selector:
+    app: dotnetcoreonk8s
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetcoreonk8s
+  namespace: fire-ug
+spec:
+  selector:
+    matchLabels:
+      app: dotnetcoreonk8s
+  replicas: 2
+  minReadySeconds: 5
+  strategy:
+    # indicate which strategy we want for rolling update
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: dotnetcoreonk8s
+    spec:
+      containers:
+        - name: dotnetcoreonk8s
+          image: liuzhenyulive/dotnet-core-on-k8s:5
+          ports:
+            - containerPort: 80
+              name: dotnetcoreonk8s
