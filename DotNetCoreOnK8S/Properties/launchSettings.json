@@ -17,6 +17,7 @@
     },
     "DotNetCoreOnK8S": {
       "commandName": "Project",
+      "commandLineArgs": "BuildVersion=123",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

@@ -2,7 +2,7 @@ using System;
 
 namespace DotNetCoreOnK8S.Models
 {
-    public class ErrorViewModel
+    public class ErrorViewModel:BaseViewModel
     {
         public string RequestId { get; set; }
 

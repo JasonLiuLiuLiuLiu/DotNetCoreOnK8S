@@ -32,6 +32,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+            
+      - name: Set build version
+        run: |
+          sed -i -e 's/999/${{ github.run_number }}/g' /DotNetCoreOnK8S/appsettings.json
+
       - uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
