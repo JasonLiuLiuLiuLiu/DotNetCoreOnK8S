@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreOnK8S", "DotNetCoreOnK8S.csproj", "{BC122DE9-895E-4578-A11C-FE92B785A460}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC122DE9-895E-4578-A11C-FE92B785A460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC122DE9-895E-4578-A11C-FE92B785A460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC122DE9-895E-4578-A11C-FE92B785A460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC122DE9-895E-4578-A11C-FE92B785A460}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF56E0EC-655C-4378-94EF-A9DCC5CE74A4}
+	EndGlobalSection
+EndGlobal
