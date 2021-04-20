@@ -39,6 +39,9 @@
         <div class="container">
             &copy; 2021 - DotNetCoreOnK8S - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> Build by Github Action,Build Version: <a href="https://github.com/liuzhenyulive/DotNetCoreOnK8S/actions">@Model.BuildVersion</a>
         </div>
+        <div class="container">
+            This application deployed at kubernetes, Node Name: @Model.NodeName ,Pod Name: @Model.PodName ,Pod Namespace: @Model.PodNameSpace ,Pod Ip: @Model.PodIp
+        </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

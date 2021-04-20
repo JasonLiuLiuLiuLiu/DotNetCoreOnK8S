@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 namespace DotNetCoreOnK8S.Controllers
 {
     public class HomeController : Controller
-    {   
+    {
         private readonly int _buildVersion;
 
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
@@ -19,14 +19,15 @@ namespace DotNetCoreOnK8S.Controllers
             _buildVersion = configuration.GetValue<int>("BuildVersion");
         }
 
-        public IActionResult Index(string name="admin")
-        {   
+        public IActionResult Index(string name = "admin")
+        {
             var model = new HomeViewModel()
             {
                 BuildVersion = _buildVersion,
                 Name = name
             };
             Console.WriteLine($"{name} is online");
+            SetEnv(model);
             return View(model);
         }
 
@@ -36,6 +37,7 @@ namespace DotNetCoreOnK8S.Controllers
             {
                 BuildVersion = _buildVersion
             };
+            SetEnv(model);
             return View(model);
         }
 
@@ -43,6 +45,14 @@ namespace DotNetCoreOnK8S.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, BuildVersion = _buildVersion });
+        }
+
+        private void SetEnv(BaseViewModel model)
+        {
+            model.NodeName = Environment.GetEnvironmentVariable("NODE_NAME");
+            model.PodName = Environment.GetEnvironmentVariable("POD_NAME");
+            model.PodNameSpace = Environment.GetEnvironmentVariable("POD_NAMESPACE");
+            model.PodIp = Environment.GetEnvironmentVariable("POD_IP");
         }
     }
 }
