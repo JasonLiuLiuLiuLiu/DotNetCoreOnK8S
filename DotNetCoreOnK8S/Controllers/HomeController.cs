@@ -19,12 +19,14 @@ namespace DotNetCoreOnK8S.Controllers
             _buildVersion = configuration.GetValue<int>("BuildVersion");
         }
 
-        public IActionResult Index()
-        {
-            var model = new BaseViewModel()
+        public IActionResult Index(string name="admin")
+        {   
+            var model = new HomeViewModel()
             {
-                BuildVersion = _buildVersion
+                BuildVersion = _buildVersion,
+                Name = name
             };
+            Console.WriteLine($"{name} is online");
             return View(model);
         }
 
