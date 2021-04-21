@@ -59,6 +59,11 @@ spec:
       containers:
       - name: dotnetcoreonk8s
         image: liuzhenyulive/dotnet-core-on-k8s:10
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
         ports:
           - containerPort: 80
             name: dotnetcoreonk8s
