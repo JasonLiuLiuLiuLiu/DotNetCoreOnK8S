@@ -11,6 +11,7 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 192.168.101.4
     path: "/export/k8s/dotnetcoreonk8s/"
