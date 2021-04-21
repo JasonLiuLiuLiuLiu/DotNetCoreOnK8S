@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using DotNetCoreOnK8S.Helper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DotNetCoreOnK8S.Models;
@@ -26,7 +27,9 @@ namespace DotNetCoreOnK8S.Controllers
                 BuildVersion = _buildVersion,
                 Name = name
             };
-            Console.WriteLine($"{name} is online");
+            var message = $"{name} is online";
+            Console.WriteLine(message);
+            LogWriter.Write(message);
             SetEnv(model);
             return View(model);
         }
