@@ -20,7 +20,7 @@ namespace DotNetCoreOnK8S.Controllers
             _buildVersion = configuration.GetValue<int>("BuildVersion");
         }
 
-        public IActionResult Index(string name = "admin",bool log=false)
+        public IActionResult Index(string name = "fire-ug",bool log=false)
         {
             var model = new HomeViewModel()
             {
